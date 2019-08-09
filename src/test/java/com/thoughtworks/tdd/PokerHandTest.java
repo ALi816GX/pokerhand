@@ -73,7 +73,32 @@ public class PokerHandTest {
 
     }
 
+    @Test
+    public void should_return_player2_when_call_compare_given_T42QJ_K4GJ3(){
 
+        Poker poker1 = new Poker('T', 'H');
+        Poker poker2 = new Poker('4', 'D');
+        Poker poker3 = new Poker('2', 'H');
+        Poker poker4 = new Poker('Q', 'S');
+        Poker poker5 = new Poker('J', 'S');
+
+        Poker poker6 = new Poker('K', 'S');
+        Poker poker7 = new Poker('4', 'D');
+        Poker poker8 = new Poker('G', 'S');
+        Poker poker9 = new Poker('J', 'C');
+        Poker poker10 = new Poker('3', 'C');
+
+        List<Poker> pokers1 = Arrays.asList(poker1,poker2,poker3,poker4,poker5);
+        Player player1 = new Player(pokers1);
+        List<Poker> pokers2 = Arrays.asList(poker6,poker7,poker8,poker9,poker10);
+        Player player2= new Player(pokers2);
+
+        Player result = PokerCompareUtil.comparePoker(player1,player2);
+
+        Assert.assertEquals(player2,result);
+        
+
+    }
 
 
 

@@ -62,5 +62,20 @@ public class PokerCompareUtil {
 
 
 
+    public static Player comparePoker(Player player1,Player player2){
+
+        List<Poker> pokers1 = player1.getPokers();
+        List<Poker> pokers2 = player2.getPokers();
+
+        if(comparePoker(pokers1,pokers2) == null){
+            return null;
+        }
+
+        return comparePoker(pokers1,pokers2) == pokers1 ? player1 : player2;
+
+    }
+
+
+
 
 }
