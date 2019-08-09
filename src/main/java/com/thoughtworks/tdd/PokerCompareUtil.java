@@ -14,7 +14,12 @@ import java.util.List;
 public class PokerCompareUtil {
 
 
-
+    /**
+     * single poker compare
+     * @param poker1
+     * @param poker2
+     * @return null: both are same equal
+     */
     public static Poker comparePoker(Poker poker1, Poker poker2){
 
         if(poker1.getNum() == poker2.getNum()){
@@ -26,6 +31,12 @@ public class PokerCompareUtil {
     }
 
 
+    /**
+     * several pokers compare
+     * @param list1
+     * @param list2
+     * @return  null: both are same equal
+     */
     public static List<Poker> comparePoker(List<Poker> list1, List<Poker> list2){
 
 
