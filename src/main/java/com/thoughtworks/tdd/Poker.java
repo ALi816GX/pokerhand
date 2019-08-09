@@ -34,10 +34,4 @@ public class Poker {
         this.color = color;
     }
 
-    public Poker comparePoker(Poker poker){
-
-        return this.num >= poker.num?this:poker;
-
-    }
-
 }
