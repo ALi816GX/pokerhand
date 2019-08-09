@@ -22,7 +22,7 @@ public class PokerHandTest {
         Poker poker1 = new Poker('2', 'H');
         Poker poker2 = new Poker('3', 'D');
 
-        Poker result = poker1.comparePoker(poker2);
+        Poker result = PokerCompareUtil.comparePoker(poker1,poker2);
 
         Assert.assertEquals(poker2,result);
 
