@@ -88,15 +88,12 @@ public class PokerHandTest {
         Poker poker9 = new Poker('J', 'C');
         Poker poker10 = new Poker('3', 'C');
 
-        List<Poker> pokers1 = Arrays.asList(poker1,poker2,poker3,poker4,poker5);
-        Player player1 = new Player(pokers1);
-        List<Poker> pokers2 = Arrays.asList(poker6,poker7,poker8,poker9,poker10);
-        Player player2= new Player(pokers2);
+        Player player1 = new Player(Arrays.asList(poker1,poker2,poker3,poker4,poker5));
+        Player player2= new Player(Arrays.asList(poker6,poker7,poker8,poker9,poker10));
 
         Player result = PokerCompareUtil.comparePoker(player1,player2);
 
         Assert.assertEquals(player2,result);
-        
 
     }
 

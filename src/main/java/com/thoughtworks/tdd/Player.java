@@ -15,6 +15,8 @@ public class Player {
 
     private List<Poker> pokers;
 
+
+
     public Player(List<Poker> list){
 
         this.pokers = list;
@@ -25,13 +27,6 @@ public class Player {
 
     }
 
-
-    /**
-     * sort Pokers
-     */
-    private void sortPoker(){
-        this.pokers.sort(Comparator.comparingInt(Poker::getNum).reversed());
-    }
 
 
     /**
@@ -73,6 +68,14 @@ public class Player {
 
         }
 
+    }
+
+
+    /**
+     * sort Pokers
+     */
+    private void sortPoker(){
+        this.pokers.sort(Comparator.comparingInt(Poker::getNum).reversed());
     }
 
 
