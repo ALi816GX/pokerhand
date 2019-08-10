@@ -1,6 +1,6 @@
 package com.thoughtworks.tdd;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IDEA
@@ -16,16 +16,29 @@ public class PokerCompareUtil {
 
 
     /**
-     * different type poker to compare
+     * player with different type poker to compare
      * @param player1
      * @param player2
      * @return
      */
-    public static Player comparePoker(Player player1, Player player2){
+    public static Player comparePlayer(Player player1, Player player2){
+
+
+        return compareHighPoker(player1,player2);
+
+
+    }
+
+    /**
+     * High poker compare
+     * @param player1
+     * @param player2
+     * @return
+     */
+    private static Player compareHighPoker(Player player1,Player player2){
 
         List<Poker> pokers1 = player1.getPokers();
         List<Poker> pokers2 = player2.getPokers();
-
 
         if(comparePoker(pokers1,pokers2) == null){
             return null;

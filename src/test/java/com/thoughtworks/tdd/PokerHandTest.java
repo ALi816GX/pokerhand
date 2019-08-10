@@ -27,7 +27,7 @@ public class PokerHandTest {
         Player player2 = new Player(Arrays.asList(poker2));
 
 
-        Player result = PokerCompareUtil.comparePoker(player1,player2);
+        Player result = PokerCompareUtil.comparePlayer(player1,player2);
 
         Assert.assertEquals(player2,result);
 
@@ -45,7 +45,7 @@ public class PokerHandTest {
         Player player1 = new Player(Arrays.asList(poker1,poker2));
         Player player2 = new Player(Arrays.asList(poker3,poker4));
 
-        Player result = PokerCompareUtil.comparePoker(player1,player2);
+        Player result = PokerCompareUtil.comparePlayer(player1,player2);
 
         Assert.assertEquals(player2,result);
 
@@ -68,9 +68,9 @@ public class PokerHandTest {
         Poker poker10 = new Poker('9', 'C');
 
         Player player1 = new Player(Arrays.asList(poker1,poker2,poker3,poker4,poker5));
-        Player player2= new Player(Arrays.asList(poker6,poker7,poker8,poker9,poker10));
+        Player player2 = new Player(Arrays.asList(poker6,poker7,poker8,poker9,poker10));
 
-        Player result = PokerCompareUtil.comparePoker(player1,player2);
+        Player result = PokerCompareUtil.comparePlayer(player1,player2);
 
         Assert.assertEquals(player2,result);
 
@@ -92,13 +92,17 @@ public class PokerHandTest {
         Poker poker10 = new Poker('3', 'C');
 
         Player player1 = new Player(Arrays.asList(poker1,poker2,poker3,poker4,poker5));
-        Player player2= new Player(Arrays.asList(poker6,poker7,poker8,poker9,poker10));
+        Player player2 = new Player(Arrays.asList(poker6,poker7,poker8,poker9,poker10));
 
-        Player result = PokerCompareUtil.comparePoker(player1,player2);
+        Player result = PokerCompareUtil.comparePlayer(player1,player2);
 
         Assert.assertEquals(player2,result);
 
     }
+
+
+
+
 
 
 
