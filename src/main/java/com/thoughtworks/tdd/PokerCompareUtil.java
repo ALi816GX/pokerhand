@@ -15,6 +15,8 @@ import java.util.*;
 public class PokerCompareUtil {
 
     private static final Player SAME_LEVEL = null;
+    private static final List<Poker> SAME_POKERS = null;
+    private static final Poker SAME_POKER = null;
 
 
     /**
@@ -59,13 +61,12 @@ public class PokerCompareUtil {
     private static Player compareDifferentLevelPoker(Player player1,Player player2){
 
         if(player1.getPokerLevel() == player2.getPokerLevel()){
-            return null;
+            return SAME_LEVEL;
         }
 
         return  player1.getPokerLevel() > player2.getPokerLevel() ? player1:player2;
 
     }
-
 
 
 
@@ -81,11 +82,11 @@ public class PokerCompareUtil {
         Poker poker1 = player1.getPairPoker();
         Poker poker2 = player2.getPairPoker();
 
-        if(comparePoker(poker1,poker2) != null){
+        if(comparePoker(poker1,poker2) != SAME_POKER){
             return comparePoker(poker1,poker2) == poker1?player1:player2;
         }
 
-        return null;
+        return SAME_LEVEL;
 
     }
 
@@ -102,8 +103,8 @@ public class PokerCompareUtil {
         List<Poker> pokers1 = player1.getPokers();
         List<Poker> pokers2 = player2.getPokers();
 
-        if(comparePoker(pokers1,pokers2) == null){
-            return null;
+        if(comparePoker(pokers1,pokers2) == SAME_POKER){
+            return SAME_LEVEL;
         }
 
         return comparePoker(pokers1,pokers2) == pokers1 ? player1 : player2;
@@ -128,13 +129,13 @@ public class PokerCompareUtil {
             poker1 = list1.get(i);
             poker2 = list2.get(i);
 
-            if(comparePoker(poker1,poker2) != null){
+            if(comparePoker(poker1,poker2) != SAME_POKER){
                 return comparePoker(poker1,poker2) == poker1 ? list1:list2;
             }
 
         }
 
-        return null;
+        return SAME_POKERS;
 
     }
 
@@ -147,7 +148,7 @@ public class PokerCompareUtil {
     private static Poker comparePoker(Poker poker1, Poker poker2){
 
         if(poker1.getNum() == poker2.getNum()){
-            return null;
+            return SAME_POKER;
         }
 
         return poker1.getNum() > poker2.getNum()?poker1:poker2;
