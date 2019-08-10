@@ -24,10 +24,35 @@ public class PokerCompareUtil {
     public static Player comparePlayer(Player player1, Player player2){
 
 
+
+        if(isPairPoker(player1) || isPairPoker(player2)){
+            return isPairPoker(player1)?player1:player2;
+        }
+
+
         return compareHighPoker(player1,player2);
 
 
     }
+
+
+    public static boolean isPairPoker(Player player){
+
+        List<Poker> list = player.getPokers();
+
+        int result = 1;
+
+        for(int i = 0;i < list.size() - 1;i++){
+            if(list.get(i).getNum() != list.get(i+1).getNum()){
+                result++;
+            }
+        }
+
+        return result != list.size();
+
+    }
+
+
 
     /**
      * High poker compare
