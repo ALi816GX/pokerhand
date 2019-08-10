@@ -14,6 +14,7 @@ import java.util.List;
 public class Player {
 
     private List<Poker> pokers;
+    private int pokerLevel;
 
 
 
@@ -25,8 +26,42 @@ public class Player {
 
         sortPoker();
 
+        judgeLevel();
+
     }
 
+
+
+
+
+    /**
+     *
+     */
+    private void judgeLevel(){
+
+        if(isPairPoker()){
+            this.pokerLevel = LevelConstant.PAIR_POKER;
+        }else {
+            this.pokerLevel = LevelConstant.HIGH_POKER;
+        }
+
+    }
+
+    private boolean isPairPoker(){
+
+        List<Poker> list = this.getPokers();
+
+        int result = 1;
+
+        for(int i = 0;i < list.size() - 1;i++){
+            if(list.get(i).getNum() != list.get(i+1).getNum()){
+                result++;
+            }
+        }
+
+        return result != list.size();
+
+    }
 
 
     /**
@@ -71,6 +106,7 @@ public class Player {
     }
 
 
+
     /**
      * sort Pokers
      */
@@ -83,7 +119,11 @@ public class Player {
         return pokers;
     }
 
-    public void setPokers(List<Poker> pokers) {
-        this.pokers = pokers;
+
+    public int getPokerLevel() {
+        return pokerLevel;
     }
+
+
+
 }
