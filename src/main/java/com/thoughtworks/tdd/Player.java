@@ -38,7 +38,10 @@ public class Player {
      */
     private void judgeLevel(){
 
-        if(isDoublePairPoker()){
+        if(isThreeOfAKind()){
+            this.pokerLevel = LevelConstant.THREE_OF_A_KIND;
+        }
+        else if(isDoublePairsPoker()){
             this.pokerLevel = LevelConstant.DOUBLE_PAIR_POKER;
             setRepeatedPokers();
         }
@@ -72,12 +75,31 @@ public class Player {
 
     }
 
-
     /**
-     * is Poker type as Double Pair
+     * is Poker type as isThreeOfAKind
      * @return
      */
-    private boolean isDoublePairPoker(){
+    private boolean isThreeOfAKind(){
+        List<Poker> list = this.getPokers();
+
+        int result = 0;
+
+        for(int i = 0;i < list.size() - 2;i++){
+            if(list.get(i).getNum() == list.get(i+1).getNum() && list.get(i).getNum() == list.get(i+2).getNum()){
+                result++;
+                break;
+            }
+        }
+
+        return result == 1;
+    }
+
+
+    /**
+     * is Poker type as Double Pairs
+     * @return
+     */
+    private boolean isDoublePairsPoker(){
 
         List<Poker> list = this.getPokers();
 

@@ -13,5 +13,6 @@ public interface LevelConstant {
     int HIGH_POKER = 0;
     int PAIR_POKER = 1;
     int DOUBLE_PAIR_POKER = 2;
+    int THREE_OF_A_KIND = 3;
 
 }
