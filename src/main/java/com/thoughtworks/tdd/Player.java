@@ -40,12 +40,37 @@ public class Player {
      */
     private void judgeLevel(){
 
-        if(isPairPoker()){
+        if(isDoublePairPoker()){
+            this.pokerLevel = LevelConstant.DOUBLE_PAIR_POKER;
+        }
+        else if(isPairPoker()){
             this.pokerLevel = LevelConstant.PAIR_POKER;
             setPairPoker();
-        }else {
+        }
+        else {
             this.pokerLevel = LevelConstant.HIGH_POKER;
         }
+
+    }
+
+
+    /**
+     * is Poker type as Double Pair
+     * @return
+     */
+    private boolean isDoublePairPoker(){
+
+        List<Poker> list = this.getPokers();
+
+        int result = 0;
+
+        for(int i = 0;i < list.size() - 1;i++){
+            if(list.get(i).getNum() == list.get(i+1).getNum()){
+                result++;
+            }
+        }
+
+        return result == 2;
 
     }
 
@@ -127,7 +152,6 @@ public class Player {
     }
 
 
-
     /**
      * sort Pokers
      */
@@ -148,4 +172,5 @@ public class Player {
     public Poker getPairPoker() {
         return pairPoker;
     }
+
 }
