@@ -24,14 +24,30 @@ public class PokerCompareUtil {
     public static Player comparePlayer(Player player1, Player player2){
 
 
-        Player result = player1.getPokerLevel() > player2.getPokerLevel() ? player1:player2;
-
-        if(result != null){
-            return result;
+        if(compareDifferentLevelPoker(player1,player2) != null){
+            return compareDifferentLevelPoker(player1,player2);
         }
+
 
         return compareHighPoker(player1,player2);
 
+
+    }
+
+
+    /**
+     * different level compare
+     * @param player1
+     * @param player2
+     * @return null:the same level
+     */
+    private static Player compareDifferentLevelPoker(Player player1,Player player2){
+
+        if(player1.getPokerLevel() == player2.getPokerLevel()){
+            return null;
+        }
+
+        return  player1.getPokerLevel() > player2.getPokerLevel() ? player1:player2;
 
     }
 
