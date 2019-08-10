@@ -16,8 +16,6 @@ public class Player {
 
     private int pokerLevel;
 
-    private Poker pairPoker;
-
     private List<Poker> repeatedPokers;
 
 
@@ -46,7 +44,7 @@ public class Player {
         }
         else if(isPairPoker()){
             this.pokerLevel = LevelConstant.PAIR_POKER;
-            setPairPoker();
+            setRepeatedPokers();
         }
         else {
             this.pokerLevel = LevelConstant.HIGH_POKER;
@@ -118,21 +116,6 @@ public class Player {
 
 
 
-    private void setPairPoker(){
-
-        List<Poker> list = this.pokers;
-
-        for(int i = 0;i < list.size() - 1;i++){
-            if(list.get(i).getNum() == list.get(i+1).getNum()){
-                this.pairPoker = list.get(i);
-                break;
-            }
-        }
-
-
-    }
-
-
     /**
      * change pokers in order to sort
      */
@@ -192,9 +175,6 @@ public class Player {
         return pokerLevel;
     }
 
-    public Poker getPairPoker() {
-        return pairPoker;
-    }
 
     public List<Poker> getRepeatedPokers() {
         return repeatedPokers;
