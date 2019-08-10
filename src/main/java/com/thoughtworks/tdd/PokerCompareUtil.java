@@ -66,21 +66,6 @@ public class PokerCompareUtil {
 
 
 
-    private static Poker getPairPoker(Player player){
-
-        List<Poker> list = player.getPokers();
-
-        Poker result = null;
-
-        for(int i = 0;i < list.size() - 1;i++){
-            if(list.get(i).getNum() == list.get(i+1).getNum()){
-                return list.get(i);
-            }
-        }
-
-        return result;
-
-    }
 
 
     /**
@@ -91,16 +76,15 @@ public class PokerCompareUtil {
      */
     private static Player comparePairPoker(Player player1,Player player2){
 
-        Poker poker1 = getPairPoker(player1);
-        Poker poker2 = getPairPoker(player2);
+        Poker poker1 = player1.getPairPoker();
+        Poker poker2 = player2.getPairPoker();
 
         if(comparePoker(poker1,poker2) != null){
             return comparePoker(poker1,poker2) == poker1?player1:player2;
         }
 
         return null;
-
-
+        
     }
 
 
