@@ -16,7 +16,7 @@ public class Player {
 
     private int pokerLevel;
 
-    private List<Poker> repeatedPokers;
+    private List<Poker> repeatedPokers = new ArrayList<>();
 
 
 
@@ -87,6 +87,7 @@ public class Player {
         for(int i = 0;i < list.size() - 2;i++){
             if(list.get(i).getNum() == list.get(i+1).getNum() && list.get(i).getNum() == list.get(i+2).getNum()){
                 result++;
+                this.repeatedPokers.add(list.get(i));
                 break;
             }
         }

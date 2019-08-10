@@ -36,6 +36,10 @@ public class PokerCompareUtil {
 
             switch (player1.getPokerLevel()){
 
+                case LevelConstant.THREE_OF_A_KIND:
+                    return compareThreeOfAKind(player1,player2);
+
+
                 case LevelConstant.DOUBLE_PAIR_POKER:
                     if(compareDoublePairsOrPairPoker(player1,player2) != SAME_LEVEL) {
                         return compareDoublePairsOrPairPoker(player1, player2);
@@ -77,6 +81,18 @@ public class PokerCompareUtil {
     }
 
 
+    private static Player compareThreeOfAKind(Player player1,Player player2){
+        List<Poker> pokers1 = player1.getRepeatedPokers();
+        List<Poker> pokers2 = player2.getRepeatedPokers();
+
+        if(comparePoker(pokers1,pokers2) != SAME_POKERS){
+            return comparePoker(pokers1,pokers2) == pokers1 ? player1 : player2;
+        }
+
+        return SAME_LEVEL;
+    }
+
+
     /**
      * Double Poker compare
      * @param player1
@@ -94,9 +110,7 @@ public class PokerCompareUtil {
 
         return SAME_LEVEL;
 
-
     }
-
 
 
 
