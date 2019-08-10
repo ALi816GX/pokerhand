@@ -38,7 +38,10 @@ public class Player {
      */
     private void judgeLevel(){
 
-        if(isThreeOfAKind()){
+        if(isStraight()){
+            this.pokerLevel = LevelConstant.STRAIGHT;
+        }
+        else if(isThreeOfAKind()){
             this.pokerLevel = LevelConstant.THREE_OF_A_KIND;
         }
         else if(isDoublePairsPoker()){
@@ -74,6 +77,24 @@ public class Player {
 
 
     }
+
+
+    private boolean isStraight(){
+
+        List<Poker> list = this.getPokers();
+
+        int result = 0;
+
+        for(int i = 0;i < list.size() - 1;i++){
+            if( list.get(i).getNum() - list.get(i+1).getNum() == 1){
+                result++;
+            }
+        }
+
+        return result == 4;
+
+    }
+
 
     /**
      * is Poker type as isThreeOfAKind
