@@ -2,9 +2,7 @@ package com.thoughtworks.tdd;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Arrays;
-import java.util.List;
 
 
 /**
@@ -24,9 +22,14 @@ public class PokerHandTest {
         Poker poker1 = new Poker('2', 'H');
         Poker poker2 = new Poker('3', 'D');
 
-        Poker result = PokerCompareUtil.comparePoker(poker1,poker2);
 
-        Assert.assertEquals(poker2,result);
+        Player player1 = new Player(Arrays.asList(poker1));
+        Player player2 = new Player(Arrays.asList(poker2));
+
+
+        Player result = PokerCompareUtil.comparePoker(player1,player2);
+
+        Assert.assertEquals(player2,result);
 
     }
 
@@ -39,12 +42,12 @@ public class PokerHandTest {
         Poker poker3 = new Poker('3', 'H');
         Poker poker4 = new Poker('4', 'S');
 
-        List<Poker> pokers1 = Arrays.asList(poker1,poker2);
-        List<Poker> pokers2 = Arrays.asList(poker3,poker4);
+        Player player1 = new Player(Arrays.asList(poker1,poker2));
+        Player player2 = new Player(Arrays.asList(poker3,poker4));
 
-        List<Poker> result = PokerCompareUtil.comparePoker(pokers1,pokers2);
+        Player result = PokerCompareUtil.comparePoker(player1,player2);
 
-        Assert.assertEquals(pokers2,result);
+        Assert.assertEquals(player2,result);
 
     }
 
@@ -64,12 +67,12 @@ public class PokerHandTest {
         Poker poker9 = new Poker('8', 'C');
         Poker poker10 = new Poker('9', 'C');
 
-        List<Poker> pokers1 = Arrays.asList(poker1,poker2,poker3,poker4,poker5);
-        List<Poker> pokers2 = Arrays.asList(poker6,poker7,poker8,poker9,poker10);
+        Player player1 = new Player(Arrays.asList(poker1,poker2,poker3,poker4,poker5));
+        Player player2= new Player(Arrays.asList(poker6,poker7,poker8,poker9,poker10));
 
-        List<Poker> result = PokerCompareUtil.comparePoker(pokers1,pokers2);
+        Player result = PokerCompareUtil.comparePoker(player1,player2);
 
-        Assert.assertEquals(pokers2,result);
+        Assert.assertEquals(player2,result);
 
     }
 
@@ -96,6 +99,9 @@ public class PokerHandTest {
         Assert.assertEquals(player2,result);
 
     }
+
+
+
 
 
 

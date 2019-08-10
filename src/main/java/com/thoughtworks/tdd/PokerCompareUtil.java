@@ -1,6 +1,5 @@
 package com.thoughtworks.tdd;
 
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -10,25 +9,32 @@ import java.util.List;
  * @Date:2019/8/10
  * @Time:00:57
  * @description:
+ *
+ *
  */
 public class PokerCompareUtil {
 
 
     /**
-     * single poker compare
-     * @param poker1
-     * @param poker2
-     * @return null: both are same equal
+     * different type poker to compare
+     * @param player1
+     * @param player2
+     * @return
      */
-    public static Poker comparePoker(Poker poker1, Poker poker2){
+    public static Player comparePoker(Player player1, Player player2){
 
-        if(poker1.getNum() == poker2.getNum()){
+        List<Poker> pokers1 = player1.getPokers();
+        List<Poker> pokers2 = player2.getPokers();
+
+
+        if(comparePoker(pokers1,pokers2) == null){
             return null;
         }
 
-        return poker1.getNum() >= poker2.getNum()?poker1:poker2;
+        return comparePoker(pokers1,pokers2) == pokers1 ? player1 : player2;
 
     }
+
 
 
     /**
@@ -37,11 +43,8 @@ public class PokerCompareUtil {
      * @param list2
      * @return  null: both are same equal
      */
-    public static List<Poker> comparePoker(List<Poker> list1, List<Poker> list2){
+    private static List<Poker> comparePoker(List<Poker> list1, List<Poker> list2){
 
-
-        list1.sort(Comparator.comparingInt(Poker::getNum).reversed());
-        list2.sort(Comparator.comparingInt(Poker::getNum).reversed());
 
         Poker poker1;
         Poker poker2;
@@ -60,20 +63,22 @@ public class PokerCompareUtil {
 
     }
 
+    /**
+     * single poker compare
+     * @param poker1
+     * @param poker2
+     * @return null: both are same equal
+     */
+    private static Poker comparePoker(Poker poker1, Poker poker2){
 
-
-    public static Player comparePoker(Player player1,Player player2){
-
-        List<Poker> pokers1 = player1.getPokers();
-        List<Poker> pokers2 = player2.getPokers();
-
-        if(comparePoker(pokers1,pokers2) == null){
+        if(poker1.getNum() == poker2.getNum()){
             return null;
         }
 
-        return comparePoker(pokers1,pokers2) == pokers1 ? player1 : player2;
+        return poker1.getNum() > poker2.getNum()?poker1:poker2;
 
     }
+
 
 
 
