@@ -34,4 +34,13 @@ public class Poker {
         this.color = color;
     }
 
+    @Override
+    public boolean equals(Object object) {
+
+        Poker poker = (Poker)object;
+
+        return this.num == poker.num;
+
+    }
+
 }

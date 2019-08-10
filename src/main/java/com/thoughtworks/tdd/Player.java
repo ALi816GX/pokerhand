@@ -1,7 +1,6 @@
 package com.thoughtworks.tdd;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IDEA
@@ -19,6 +18,8 @@ public class Player {
 
     private Poker pairPoker;
 
+    private List<Poker> repeatedPokers;
+
 
 
     public Player(List<Poker> list){
@@ -27,12 +28,11 @@ public class Player {
 
         changePokers();
 
-        sortPoker();
+        sortPoker(this.pokers);
 
         judgeLevel();
 
     }
-
 
 
     /**
@@ -42,6 +42,7 @@ public class Player {
 
         if(isDoublePairPoker()){
             this.pokerLevel = LevelConstant.DOUBLE_PAIR_POKER;
+            setRepeatedPokers();
         }
         else if(isPairPoker()){
             this.pokerLevel = LevelConstant.PAIR_POKER;
@@ -50,6 +51,26 @@ public class Player {
         else {
             this.pokerLevel = LevelConstant.HIGH_POKER;
         }
+
+    }
+
+    private void setRepeatedPokers(){
+
+        Set<Poker> set = new HashSet<>();
+
+        List<Poker> list = this.getPokers();
+
+
+        for(int i = 0;i < list.size() - 1;i++){
+            if(list.get(i).getNum() == list.get(i+1).getNum()){
+                set.add(list.get(i));
+            }
+        }
+
+        this.repeatedPokers = new ArrayList<>(set);
+
+        sortPoker(this.repeatedPokers);
+
 
     }
 
@@ -94,6 +115,8 @@ public class Player {
         return result != list.size();
 
     }
+
+
 
     private void setPairPoker(){
 
@@ -155,8 +178,8 @@ public class Player {
     /**
      * sort Pokers
      */
-    private void sortPoker(){
-        this.pokers.sort(Comparator.comparingInt(Poker::getNum).reversed());
+    private void sortPoker(List<Poker> pokers){
+        pokers.sort(Comparator.comparingInt(Poker::getNum).reversed());
     }
 
 
@@ -172,5 +195,11 @@ public class Player {
     public Poker getPairPoker() {
         return pairPoker;
     }
+
+    public List<Poker> getRepeatedPokers() {
+        return repeatedPokers;
+    }
+
+
 
 }

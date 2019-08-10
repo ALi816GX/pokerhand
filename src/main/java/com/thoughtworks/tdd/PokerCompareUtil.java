@@ -36,6 +36,9 @@ public class PokerCompareUtil {
 
             switch (player1.getPokerLevel()){
 
+                case LevelConstant.DOUBLE_PAIR_POKER:
+                    return compareDoublePairPoker(player1,player2);
+
                 case LevelConstant.PAIR_POKER:
                     if(comparePairPoker(player1,player2) != SAME_LEVEL){
                         return comparePairPoker(player1,player2);
@@ -69,6 +72,25 @@ public class PokerCompareUtil {
     }
 
 
+    /**
+     * Double Poker compare
+     * @param player1
+     * @param player2
+     * @return
+     */
+    private static Player compareDoublePairPoker(Player player1,Player player2){
+
+        List<Poker> pokers1 = player1.getRepeatedPokers();
+        List<Poker> pokers2 = player2.getRepeatedPokers();
+
+        if(comparePoker(pokers1,pokers2) != SAME_POKERS){
+            return comparePoker(pokers1,pokers2) == pokers1 ? player1 : player2;
+        }
+
+        return SAME_LEVEL;
+
+
+    }
 
 
     /**
